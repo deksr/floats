@@ -1,48 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="flipapp">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
-	<!-- <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" /> -->
 	<link rel="stylesheet" href="finalthreedee.css">
 </head>
-<body>
-	<div class="container">
-		<div class="card">
+<body ng-controller="flipcontroller">
+	{{title}}
+	<br>
+<p class="paragraph"> To define is to limit. -OW </p> 
+
+
+<div class="container">
+        <div class="card">
       <div class="front">
-           <p> Hi </p>
-           <button class="flipbutton"> press the button</button>  
+        <p> Hi from front</p>
+        <button ng-click="flipbutton()" class="htmlbut" > press the button</button>  
       </div>
       <div class="back">
-            <button class="flipbutton"> press the button</button>   
+      	<p> Hi from back</p>
+        <button ng-click="flipslipper()" class="htmlbut"> press the button</button>   
       </div>
-      
     </div>
-
   </div>
+  <br>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"> </script>
 
-  <script>
-$(document).ready(function() {
-    console.log("ready!");
-    $('.flipbutton').on('click', function(){
-    	$('.card').toggleClass('flipped');
-    })
-});
-  </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.1/angular.min.js"> </script>
+
+ <script>
+var app = angular.module('flipapp', []);
+
+app.controller('flipcontroller', function($scope, $document){
+	$scope.title = "hay from angular"
+
+// * hmm.. below maynot be the right way to do but it works! Change later.
+
+	$scope.flipbutton = function(){
+	    // var getpara = angular.element($document[0].getElementsByClassName('paragraph'));
+     //  getpara.addClass('bingo')
+
+	  // var getpara = angular.element($document[0].getElementsByClassName('paragraph'));
+   //  getpara.css('color', 'green');
+
+    var getpara = angular.element($document[0].getElementsByClassName('card'));
+    getpara.addClass('sun');
+
+    var removeme = angular.element($document[0].getElementsByClassName('card'));
+    removeme.removeClass('moon')  
+	}
+
+	$scope.flipslipper = function(){
+		var betpara = angular.element($document[0].getElementsByClassName('card'));
+    betpara.addClass('moon')  
+
+    var deleme = angular.element($document[0].getElementsByClassName('card'));
+    deleme.removeClass('sun') 
+	}
+})
+</script>
 </body>
 </html>
-
-<!-- 
-<div class="threedeespace">
-	  <div class="action">
-	    <div class="frontside">
-	      <p>Front Question</p>
-	    </div>
-	    <div class="backside">
-	      <p>Back Answer</p>
-	    </div>
-	  </div> -->
-	</div>
