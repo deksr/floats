@@ -7,9 +7,6 @@
 	<link rel="stylesheet" href="finalthreedee.css">
 </head>
 <body ng-controller="flipcontroller">
-	{{title}}
-	<br>
-<p class="paragraph"> To define is to limit. -OW </p> 
 
 
 <div class="container">
@@ -24,7 +21,35 @@
       </div>
     </div>
   </div>
+
+  <div class="container">
+        <div class="card">
+      <div class="front">
+        <p> Hi from front</p>
+        <button ng-click="flipbutton()" class="htmlbut" > press the button</button>  
+      </div>
+      <div class="back">
+        <p> Hi from back</p>
+        <button ng-click="flipslipper()" class="htmlbut"> press the button</button>   
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+        <div class="card">
+      <div class="front">
+        <p> Hi from front</p>
+        <button ng-click="flipbutton()" class="htmlbut" > press the button</button>  
+      </div>
+      <div class="back">
+        <p> Hi from back</p>
+        <button ng-click="flipslipper()" class="htmlbut"> press the button</button>   
+      </div>
+    </div>
+  </div>
   <br>
+
+
 
 
 
@@ -34,16 +59,8 @@
 var app = angular.module('flipapp', []);
 
 app.controller('flipcontroller', function($scope, $document){
-	$scope.title = "hay from angular"
-
-// * hmm.. below maynot be the right way to do but it works! Change later.
 
 	$scope.flipbutton = function(){
-	    // var getpara = angular.element($document[0].getElementsByClassName('paragraph'));
-     //  getpara.addClass('bingo')
-
-	  // var getpara = angular.element($document[0].getElementsByClassName('paragraph'));
-   //  getpara.css('color', 'green');
 
     var getpara = angular.element($document[0].getElementsByClassName('card'));
     getpara.addClass('sun');
@@ -53,6 +70,7 @@ app.controller('flipcontroller', function($scope, $document){
 	}
 
 	$scope.flipslipper = function(){
+
 		var betpara = angular.element($document[0].getElementsByClassName('card'));
     betpara.addClass('moon')  
 

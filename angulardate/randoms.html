@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html ng-app="randomapp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style> 
+
+.abc{
+background-color: green;
+}
+
+.def{
+background-color: red;
+}
+
+.ghi{
+background-color: blue
+}
+
+	</style>
+</head>
+<body ng-controller ="randomcontroller">
+	<p class="metitle"> {{title}} </p>
+	<div  ng-repeat = "data in alldata">
+  <p ng-style="backgrounds"> {{data.name}} </p> <br>
+  {{data.color}} <br> <br>
+	</div>
+
+<hr>
+	<div ng-repeat = "planet in solarsytem"  ng-style="geturl()">
+	{{planet.name}}
+		
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"> </script>
+
+	<script>
+	var angu = angular.module('randomapp', []);
+  angu.controller('randomcontroller', function($scope, $document){
+
+  $scope.title = "Message from random";
+  $scope.alldata = [
+  {
+  	name: "dog",
+  	color: " black"
+  },
+  {
+  	name: "cat",
+  	color: "orange"
+  },
+  {
+  	name: "rabbit",
+  	color: "white"
+  }
+  ]
+
+
+
+   // old way of doing *********
+	var colors = ["abc", "def", "ghi"]
+	var randomcolors = colors[Math.floor(Math.random() * 3)];
+	      console.log(randomcolors) 
+
+	var fortitle =  angular.element($document[0].getElementsByClassName('metitle'))
+	     fortitle.addClass(randomcolors)
+	     console.log('"'+  randomcolors +'"')
+
+
+
+  // using ng-style: *********
+	$scope.backgrounds = {
+		"color": "green",
+		"background-color": "yellow"
+	}
+	  
+  // ng-style with function *************
+	$scope.solarsytem = [
+	  {
+	  	name: "earth"
+	  },
+	  {
+	  	name: "venus"
+	  },
+	  {
+	  	name: "jupiter"
+	  }
+	]
+
+ $scope.geturl =  function(){
+
+ 	var images = ['url("blabla.jpg")','url("blublu.jpg")', 'url("bleble.jpg")']
+
+ 	var randomurls = images[Math.floor(Math.random() * images.length )];
+      console.log(" this is random color calling" + randomurls) 
+     return {"background-image" : randomurls,
+              "height": '50px',
+              "width": '50px',
+               "background-repeat": "no-repeat",
+               "background-size": "100%",} 
+ }
+
+  
+// sending through index another method
+
+  })
+
+	</script>
+</body>
+</html>

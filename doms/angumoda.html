@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		.vanish{
+		  visibility: hidden;
+		}
+
+	</style>
+<body ng-app="app">
+  <div ng-controller = "mocontroller">
+  
+  <button ng-click= "clicktoshow()"> Hay squirrel </button>
+  <p ng-show = "showing"  class="bigsquirrel"> squirrel peeps out of the hole  <button ng-click="hidethis()"> go Hide </button>
+ </p>
+  
+
+   <!-- div ng-repeat="f in frontend">
+    <p>{{f.favcolor}} </p>
+
+    <div> -->
+
+      <div ng-repeat="all in alldata">
+    <p>{{all.name}} </p>
+      <div ng-repeat="a in all">
+    <p>{{a.favcolor}} </p>
+
+
+    </div>
+
+
+
+  </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"> </script>
+
+  <script>
+
+  var angu = angular.module('app', []);
+  angu.controller('mocontroller', function($scope, $document){
+
+  $scope.clicktoshow = function(){
+    $scope.showing = true;
+    var gotdome =  angular.element($document[0].getElementsByClassName('bigsquirrel'))
+    gotdome.removeClass('vanish');
+  }
+
+
+ $scope.hidethis = function(){
+   var gotdomelement =  angular.element($document[0].getElementsByClassName(' bigsquirrel'))
+    gotdomelement.addClass('vanish')
+  }
+})
+
+  </script>
+</body>
+</html>
