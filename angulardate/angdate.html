@@ -10,6 +10,14 @@
 		  visibility: hidden;
 		}
 
+    .pinky{
+      background-color: pink;
+    }
+
+    .blueey{
+      background-color: lightblue;
+    }
+
 	</style>
 <body ng-app="app">
   <div ng-controller = "mocontroller">
@@ -18,12 +26,36 @@
     <p ng-show = "showing"  class="bigsquirrel"> squirrel peeps out of the hole  <button ng-click="hidethis()"> go hide </button>
     </p>
     <br>
+     <hr>
+    <br> <br>
+
+<!-- ****************************************--> 
+
 
     Search City: <input ng-model="searchterm">
     <div ng-repeat = "city in cities | filter:searchterm | orderBy:'name'">
     {{city.name}}
+
     </div>
-      
+    <hr>
+    <br> <br>
+
+<!--****************************************--> 
+
+    <div ng-show = "true" ng-hide="hidden"> 
+      <p class= "pinky"> showing by default </p>
+      <button ng-click="hide()"> hide deafulat and show  hidden </button>
+    </div> 
+
+
+    <div ng-hide ="true" ng-show="showdefault">
+      <p class="blueey"> hidden shown on click </p>
+      <button ng-click="showdef()"> hide hidden and show default </button>
+    </div>
+
+
+
+
   </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"> </script>
@@ -45,6 +77,7 @@
     gotdomelement.addClass('vanish')
   }
 
+// **************************
 
   $scope.cities= [{ 'name': 'New Delhi'},
                 { 'name': 'Londan'},
@@ -57,6 +90,24 @@
                 { 'name': 'Shanghai'},
                 { 'name': 'Los Angeles'}];
 
+  // ****************************************
+
+
+  $scope.hide = function(){
+     $scope.hidden = true;
+    $scope.showdefault=  true;
+  }
+
+  $scope.showdef= function(){
+    $scope.hidden = false;
+    $scope.showdefault=  false;
+  }
+
 })
+
+
+
+
+
 
   </script>
