@@ -53,8 +53,15 @@
       <button ng-click="showdef()"> hide hidden and show default </button>
     </div>
 
+<!--****************************************--> 
+<hr>
+
+<!-- when you click button one, button one showuld hide and show two. when you click button two show one and hide two. -->
+
+<button ng-click="one()" ng-hide="hideone"> Button one </button>
 
 
+<button ng-click="two()" ng-show="showtwo" ng-hide="true"> Button two </button>
 
   </div>
 
@@ -64,6 +71,9 @@
 
   var angu = angular.module('app', []);
   angu.controller('mocontroller', function($scope, $document){
+
+ 
+
 
   $scope.clicktoshow = function(){
     $scope.showing = true;
@@ -103,9 +113,24 @@
     $scope.showdefault=  false;
   }
 
+  // ********************************
+
+  $scope.one = function(){
+    $scope.hideone = true;
+    $scope.showtwo = true;
+  }
+
+  $scope.two = function(){
+    $scope.hideone = false; 
+    $scope.showtwo = false; 
+
+  }
+
+
 })
 
 
+  
 
 
 

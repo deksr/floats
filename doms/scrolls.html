@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+
+.paragraphs{
+width: 100px;
+background-color: lightblue;
+}
+	</style>
+</head>
+<body>
+
+ <button id = "clicktoslide"> Click to scroll down </button>
+ <hr>
+
+<div class= "paragraphs"> 
+ <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> 
+
+  <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> 
+
+
+  
+</div>
+
+<div> 
+<p> You just scrolled down. How cool is that? <p> 
+	<button onClick="stopScroll()"> stop scroll </button>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"> </script>
+
+	<script>
+
+  // javascript
+
+
+  function pagescroll() {
+	  return window.scrollTo(0,150); 
+	}
+
+	var selectedbutton = document.querySelector("#clicktoslide");
+	selectedbutton.addEventListener('click', function(event) {
+		console.log("just got clicked")
+	  pagescroll() 
+	})
+
+
+
+// below works but not using since it takes you to the bottom of the page. 
+
+ //  var scrolldelay;
+
+ //  function pagescroll() {
+	//   window.scrollBy(0,50); 
+	//   scrolldelay = setTimeout('pagescroll()',30); 
+	// }
+
+	// var selectedbutton = document.querySelector("#clicktoslide");
+	// selectedbutton.addEventListener('click', function(event) {
+	// 	console.log("just got clicked")
+	//   pagescroll() 
+	// })
+
+ //  // windowscroll with event listner 
+ //  // note: if the this.scrollY is greater than 873.6 on y coordinate then cancel the scroll
+
+	// window.addEventListener("scroll", function(event) {
+	// 	console.log(this.scrollY)
+	// 	if (this.scrollY > 873.6){
+	// 		clearTimeout(scrolldelay);
+	// 	}
+	// })
+
+
+
+	</script>
+	
+</body>
+</html>
