@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+<html ng-app="routeapp">
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='' />
+  </head>
+  <body>
+    <p> This is a tag </p>
+
+    <a href="/">Angular Routing Example</a>
+
+    <ul>
+      <li><a href="#"> Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+
+    <div id="main">
+        <div ng-controller="somecontroller">
+          {{message}}
+
+          <div ng-view>
+
+          </div>
+        </div>
+          
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"> </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"> </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-resource.min.js"> </script>
+
+
+	 <script src="script.js"> </script> 
+  </body>
+</html>
