@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="flipapp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="finalthreedee.css">
+</head>
+<body ng-controller="flipcontroller">
+
+
+<div class="container">
+        <div class="card">
+      <div class="front">
+        <p> Hi from front</p>
+        <button ng-click="flipbutton()" class="htmlbut" > press the button</button>  
+      </div>
+      <div class="back">
+      	<p> Hi from back</p>
+        <button ng-click="flipslipper()" class="htmlbut"> press the button</button>   
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+        <div class="card">
+      <div class="front">
+        <p> Hi from front</p>
+        <button ng-click="flipbutton()" class="htmlbut" > press the button</button>  
+      </div>
+      <div class="back">
+        <p> Hi from back</p>
+        <button ng-click="flipslipper()" class="htmlbut"> press the button</button>   
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+        <div class="card">
+      <div class="front">
+        <p> Hi from front</p>
+        <button ng-click="flipbutton()" class="htmlbut" > press the button</button>  
+      </div>
+      <div class="back">
+        <p> Hi from back</p>
+        <button ng-click="flipslipper()" class="htmlbut"> press the button</button>   
+      </div>
+    </div>
+  </div>
+  <br>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.1/angular.min.js"> </script>
+
+ <script>
+var app = angular.module('flipapp', []);
+
+app.controller('flipcontroller', function($scope, $document){
+
+	$scope.flipbutton = function(){
+
+    var getpara = angular.element($document[0].getElementsByClassName('card'));
+    getpara.addClass('sun');
+
+    var removeme = angular.element($document[0].getElementsByClassName('card'));
+    removeme.removeClass('moon')  
+	}
+
+	$scope.flipslipper = function(){
+
+		var betpara = angular.element($document[0].getElementsByClassName('card'));
+    betpara.addClass('moon')  
+
+    var deleme = angular.element($document[0].getElementsByClassName('card'));
+    deleme.removeClass('sun') 
+	}
+})
+</script>
+</body>
+</html>

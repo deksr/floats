@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		.vanish{
+		  visibility: hidden;
+		}
+
+    .pinky{
+      background-color: pink;
+    }
+
+    .blueey{
+      background-color: lightblue;
+    }
+
+	</style>
+<body ng-app="app">
+  <div ng-controller = "mocontroller">
+  
+    <button ng-click= "clicktoshow()"> Hay squirrel </button>
+    <p ng-show = "showing"  class="bigsquirrel"> squirrel peeps out of the hole  <button ng-click="hidethis()"> go hide </button>
+    </p>
+    <br>
+     <hr>
+    <br> <br>
+
+<!-- ****************************************--> 
+
+
+    Search City: <input ng-model="searchterm">
+    <div ng-repeat = "city in cities | filter:searchterm | orderBy:'name'">
+    {{city.name}}
+
+    </div>
+    <hr>
+    <br> <br>
+
+<!--****************************************--> 
+
+    <div ng-show = "true" ng-hide="hidden"> 
+      <p class= "pinky"> showing by default </p>
+      <button ng-click="hide()"> hide deafulat and show  hidden </button>
+    </div> 
+
+
+    <div ng-hide ="true" ng-show="showdefault">
+      <p class="blueey"> hidden shown on click </p>
+      <button ng-click="showdef()"> hide hidden and show default </button>
+    </div>
+
+<!--****************************************--> 
+<hr>
+
+<!-- when you click button one, button one showuld hide and show two. when you click button two show one and hide two. -->
+
+<button ng-click="one()" ng-hide="hideone"> Button one </button>
+
+
+<button ng-click="two()" ng-show="showtwo" ng-hide="true"> Button two </button>
+<br>
+<!--****************************************--> 
+<hr>
+<button ng-click="menubutton()" > menu</button>
+
+<p ng-hide="menuhide" ng-show="sunny"> This is all menus</p>
+
+
+<br> <br>
+<button ng-click="state = true" ng-hide="state"> funone </button>
+<button ng-click="state = false" ng-show="state"> funtwo </button>
+
+
+  </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"> </script>
+
+  <script>
+
+  var angu = angular.module('app', []);
+  angu.controller('mocontroller', function($scope, $document){
+
+
+    $scope.menubutton = function(){
+      $scope.menuhide = true;
+    }
+
+
+// ***************
+
+  $scope.clicktoshow = function(){
+    $scope.showing = true;
+    var gotdome =  angular.element($document[0].getElementsByClassName('bigsquirrel'))
+    gotdome.removeClass('vanish');
+  }
+
+
+ $scope.hidethis = function(){
+   var gotdomelement =  angular.element($document[0].getElementsByClassName(' bigsquirrel'))
+    gotdomelement.addClass('vanish')
+  }
+
+// **************************
+
+  $scope.cities= [{ 'name': 'New Delhi'},
+                { 'name': 'Londan'},
+                { 'name': 'New York'},
+                { 'name': 'Paris'},
+                { 'name': 'Tokyo' },
+                { 'name': 'Munic'},
+                { 'name': 'Bangkok'},
+                { 'name': 'Beijing'},
+                { 'name': 'Shanghai'},
+                { 'name': 'Los Angeles'}];
+
+  // ****************************************
+
+
+  $scope.hide = function(){
+     $scope.hidden = true;
+    $scope.showdefault=  true;
+  }
+
+  $scope.showdef= function(){
+    $scope.hidden = false;
+    $scope.showdefault=  false;
+  }
+
+  // ********************************
+
+  $scope.one = function(){
+    $scope.hideone = true;
+    $scope.showtwo = true;
+  }
+
+  $scope.two = function(){
+    $scope.hideone = false; 
+    $scope.showtwo = false; 
+
+  }
+
+
+})
+
+
+  
+
+
+
+
+  </script>

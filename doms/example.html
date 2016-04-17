@@ -1,0 +1,56 @@
+<html>
+<head>
+
+	<style> 
+.mainHeader {
+    background: no-repeat center bottom scroll; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 150px;
+    padding-top: 2%;
+    font-size: 100%;
+}
+
+</style>
+</head>
+<body>
+<header></header>
+
+<header class="mainHeader"></header>
+<button class="pressme"> press to stop </button>
+
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(document).ready(function(){
+var header = $('body');
+
+var backgrounds = new Array(
+    'url(http://www.clipartlord.com/wp-content/uploads/2014/04/horse10.png)'
+  , 'url(http://images.clipartpanda.com/mare-clipart-horse.gif)'
+  , 'url(http://thumbs.dreamstime.com/z/cute-horse-3320969.jpg)'
+);
+
+var counter = -1;
+
+function nextBackground() {
+  counter = counter + 1;
+  consoel.log("i got called")
+  header.css('background-image', backgrounds[counter]);
+  if (counter == backgrounds.length){
+  // counter = -1
+  clearInterval(counter);
+
+  }
+
+}
+
+setInterval(nextBackground, 3000);
+
+
+});
+</script>
+</body>
+</html>

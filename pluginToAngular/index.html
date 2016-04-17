@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+
+	<div ng-app="pluginexample">
+		<div ng-controller = "ToDoCtrl">
+			{{todo.user}}
+			<ul ng-repeat="item in todo.items">
+          <li>{{item.action}}</li>
+          <li easypiechart options="options" percent="item.price">  price of knowledge: {{item.price}}??(...actually priceless)</li>
+      </ul>
+		</div>
+	</div>
+
+
+	<script src = "angular.js"></script>
+
+	<script src = "angular.easypiechart.js"></script>
+
+	<script src = "jquery-2.1.4.js"></script>
+
+<script>
+	var pluginbabe = angular.module("pluginexample", ['easypiechart']);
+
+
+	var model = {
+    user: "Do you know the meaning of the word encyclopedia? It is circle of learning.",
+    items: [{ action: "knowledge", price: 100 }]
+  }
+
+
+	pluginbabe.controller("ToDoCtrl", function ($scope) {
+    $scope.todo = model;
+    $scope.options = {
+            animate:{
+                duration:1000,
+                enabled:true
+            },
+            barColor:'#2C3E50',
+            trackColor: '#ace',
+            scaleColor:false,
+            lineWidth:5,
+            trackWidth: 5,
+            lineCap:'round'
+        };
+
+  });
+
+
+	</script>
+</body>
+</html>

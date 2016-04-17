@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="learnfilterapp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+
+	<div ng-controller="appscontroller">
+		{{title}} <br>
+
+      <input type="text" ng-model="name"/>
+      <div>{{name|filterone}}</div>
+      <p> {{secondone}} </p>
+      <p>{{thirdone}} </p> 
+
+      <div ng-repeat= "item in fourth ">
+      	{{item.name}}
+
+      </div>  
+
+	</div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"> </script>
+
+  <script>
+
+
+  // all filters are here
+	var someapp = angular.module('allcustomfilters', []);
+
+		someapp.filter('filterone', function(){
+		  return function(input) { 
+		    var output = "";
+		    output = input.toUpperCase()
+		    return output;
+		  }
+	  })
+
+		someapp.filter('filtertwo', function(){
+		  return function(input) { 
+		    return 'hello ' + input;
+		  }
+		})
+
+
+
+
+  // controller is below
+  var appme = angular.module('learnfilterapp', ['allcustomfilters']);
+  appme.controller('appscontroller', function($scope, $filter){
+  	$scope.title = "I am fron controller";
+
+  	$scope.name = " "; //this returns cap case for the input but filter is embeded in html view 
+
+    // ******* second way of doing ********
+  	$scope.color = "grey"
+    $scope.secondone =  $filter('filterone')($scope.color);
+    $scope.thirdone = $filter('filtertwo')($scope.color);
+  
+    // ***************
+
+  	$scope.datas = [
+  	{ name : "apple",
+  	  type: "fruit"
+  	},
+    { name : "cashew",
+  	  type: "nuts"
+  	}]
+   
+    var something= $filter('filtertwo')($scope.datas);
+    $scope.fourth = something
+
+  })
+
+
+  </script>
+</body>
+</html>
